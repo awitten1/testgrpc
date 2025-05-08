@@ -19,6 +19,7 @@ find_program(_GRPC_CPP_PLUGIN_EXECUTABLE grpc_cpp_plugin)
 find_program(_PROTOBUF_PROTOC protoc)
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+set(CMAKE_CXX_STANDARD 20)
 
 add_custom_command(
       OUTPUT "${test_proto_srcs}" "${test_proto_hdrs}" "${test_grpc_srcs}" "${test_grpc_hdrs}"
@@ -45,6 +46,8 @@ target_link_libraries(test_grpc_proto
   gRPC::grpc++_reflection
   gRPC::grpc++
   protobuf::libprotobuf)
+
+target_include_directories(test_grpc_proto PUBLIC "${CMAKE_CURRENT_BINARY_DIR}")
 
 target_link_libraries(server test_grpc_proto)
 target_link_libraries(client test_grpc_proto)

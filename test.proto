@@ -4,7 +4,7 @@ syntax = "proto3";
 package keyvaluestore;
 
 service KeyValueStore {
-  rpc GetValues (stream Request) returns (stream Response) {}
+  rpc GetValue (Request) returns (Response) {}
 }
 
 message Request {
