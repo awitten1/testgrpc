@@ -33,6 +33,7 @@ add_custom_command(
 
 add_executable(client client.cpp)
 add_executable(server server.cpp)
+add_executable(async_server async_server.cpp)
 
 add_library(test_grpc_proto
   ${test_grpc_srcs}
@@ -51,4 +52,5 @@ target_include_directories(test_grpc_proto PUBLIC "${CMAKE_CURRENT_BINARY_DIR}")
 
 target_link_libraries(server test_grpc_proto)
 target_link_libraries(client test_grpc_proto)
+target_link_libraries(async_server test_grpc_proto)
 
